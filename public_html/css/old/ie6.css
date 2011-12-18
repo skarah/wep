@@ -1,0 +1,4 @@
+#page{width:expression((document.documentElement.clientWidth || document.body.clientWidth) > "1000px"? "1000px":"auto");}
+.png {behavior: url("iepngfix.htc");}
+#page{*height: 100%;}
+#layout {*height: 100%;}

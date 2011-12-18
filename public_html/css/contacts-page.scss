@@ -1,0 +1,308 @@
+﻿@import "base/base.scss";
+@import "base/func.scss";
+@import "base/all.scss";
+@import "ie_hack.scss";
+
+
+body {
+	background: #d4effc url('../images/bottom_bg.png') top center;
+	min-height: 754px;
+}
+
+// Top Menu 
+.top_menu {
+	position: relative;
+	top: -15px;
+	background: url('../images/title_bg.png') repeat-x top;
+	height: 173px;
+	z-index: 1;
+	padding-top: 26px;
+
+	.top_menu_container {
+		background: url('../images/title_top_bg.png') no-repeat;
+        width: 978px;
+        padding-top: 12px;
+        margin: 0 auto;
+        position: relative;
+
+        .top_menu_center {
+            position: relative;
+            width: 838px;
+            padding: 21px  70px 26px 70px;
+            background: url('../images/title_center_bg.png') repeat-y;
+        }
+        .top_menu_bottom {
+            background: url('../images/title_bottom_bg.png') no-repeat bottom;
+            padding-bottom: 23px;
+            position: relative; 
+            width: 978px;
+        }
+		h1 {
+			color: #ff6600;
+			font: 36px Georgia;
+			font-weight: normal;
+			margin-bottom: 18px;
+		}
+		ul {
+			list-style: none;
+			margin: 0px;
+			li {
+				display: inline;
+				margin-right: 15px;
+				a {
+					color: #0099cc;
+					font: 14px Arial;
+				}
+				a:hover {
+					color: #ff6600;
+				}
+			}
+			li.active {
+				a {
+					font-weight: bold;
+					color: #cccccc;
+				}
+				a:hover {
+					color: #ff6600;
+				}
+			}
+		}
+	}
+}
+
+// Main Content
+#main {
+	padding-bottom: 20px;
+
+	.main_container {
+		width: 969px;
+		margin: 0 auto;	
+
+		.find {
+			background: url('../images/sep.png') repeat-x bottom;
+			padding-bottom: 27px;
+			h2 {
+				font: 30px/60px Georgia;
+				font-style: italic;
+				margin-bottom: 20px;
+				margin-left: 9px;
+			}
+			h3	{
+				background: url('../images/contact_icons.png') no-repeat;
+				height: 44px;
+				font: 24px/36px Georgia;
+				font-style: italic;
+				padding-left: 44px;
+			}
+			p {
+				font: 16px/22px Georgia;
+				margin-bottom: 11px;
+				padding-left: 9px;
+			}
+			div {
+				width: 300px;
+				margin-right: 30px;
+			}
+			.left {
+				float: left;
+				h3	{
+					background-position: 0 0;
+				}
+			}
+			.right {
+				float: right;
+				margin-right: 0;
+				h3	{
+					background-position: 0 -88px;
+				}
+			}
+			.center {
+				float: left;
+				h3	{
+					background-position: 0 -44px;
+				}
+			}
+		}
+	}
+	.map {
+		width: 978px;	
+		height: 413px;
+		margin: 18px auto;
+		background: url('../images/sep.png') repeat-x bottom;
+		padding-bottom: 63px;
+		
+		h2	{
+			font: 30px/60px Georgia;
+			font-style: italic;
+			margin-left: 9px;		
+		}
+				
+		.map_bg {
+			width: 964px;	
+			height: 395px;
+			padding: 14px 0 0 19px;
+			background: url('../images/map_bg.png') no-repeat;	
+			#GMapContainer {
+				width: 940px;
+				height: 350px
+			}
+		}
+	}
+
+	.order_form {
+		width: 979px;
+		margin: 0 auto;
+	
+		h2	{
+			font: 30px/60px Georgia;
+			font-style: italic;
+			margin-left: 9px;		
+		}		
+
+		.form {
+			width: 959px;
+			height: 777px;	
+			background: url('../images/order_form_bg.png') no-repeat;
+			padding: 0 0 0 20px;
+		}
+		.left{
+	    	width: 300px;
+	    	float: left;
+	    	padding-top: 55px;
+	    	margin-right: 20px;
+	    	h3 {
+		        font-family:Georgia;
+		        font-size:14px;
+		        font-weight:bold;
+		        color: #fff;
+		        margin-bottom:36px;
+		        margin-left: 33px;
+		        text-transform: uppercase;
+
+		        @include shadow(#cc3300);
+	    	}
+	    	p {
+	    		font: 16px/22px Georgia;
+	    		color: #fff;
+	    		margin-bottom: 13px;
+	    		padding-left: 31px;
+	    	}
+    	}
+   		.right {
+	    	float: left;
+	    	width: 620px;
+	    	padding-top: 39px;
+	    	form {
+	    		label {
+	    			font: 14px/22px Arial;
+	    			color: #d4effc;
+	    			display: block;
+	    			width: 250px;
+	    		}
+	    		p {
+	    			vertical-align: top;
+	    			margin-bottom: 15px;
+	    			font: 14px/22px Arial;
+	    			color: #d4effc;
+
+	    			input {
+	    				width: 256px;
+	    				height: 40px;
+	    				border: 0px;
+	    				font: 16px;
+	    				color: #666666;
+	    				font-style: italic;
+	    				padding: 0 12px;
+	    				vertical-align: middle;
+	    			}
+	    			#phone, #email, #name, #company_name {
+	    				background: url('../images/mail_form_email_field.png') no-repeat;
+	    			}
+	    			#message {
+	    				width: 566px;
+	    				height: 126px;
+	    				padding: 12px 12px;
+	    				border: 0;
+	    				background: url('../images/mail_form_message_field.png') no-repeat;
+	    			}
+	    			#captcha {
+	    				float: left;
+	    				width: 172px;
+	    				background: url('../images/mail_form_captcha_field.png') no-repeat;
+	    				margin-right: 16px;
+	    				vertical-align: bottom;
+	    			}
+	    		}
+	    		p.captcha {
+	    			width: 500px;
+	    			img {
+	    				width: 63px;
+	    				height: 30px;
+	    			}
+	    		}
+	    		p.submit {
+	    			clear: both;
+	    			padding-top: 15px;
+	    			input {
+	    				width: 166px;
+	    				height: 51px;
+	    				background: url('../images/mail_form_send_button.png') no-repeat;
+	    			}
+	    			input:hover {
+	    				background-position: 0px -52px;
+	    			}
+	    			span {
+	    				@include shadow(#006699);
+	    				font: 18px Arial;
+	    				margin-left: 10px;
+	    			}
+	    		}
+	    		p.name{
+	    			float: left;
+	    			margin-right: 30px;	
+	    		}
+	    		p.phone {
+	    			float: left;
+	    		}
+	    		p.email {
+	    			float: left;
+	    			margin-right: 30px;	
+	    		}
+	    		p.company_name {
+	    			float: left;
+	    		}
+	    		p.chk_grp {
+	    			clear: both;
+	    			line-height: 10px;
+	    			span {
+	    				display: block;
+	    				margin-bottom: 0px;
+	    			}
+	    		}
+	    		ul {
+    				margin: 0;
+    				list-style: none;
+    				li {
+    					margin-bottom: 5px;
+    					label {
+		    				display: inline;
+		    				color: #000;
+		    				font: 16px Georgia;
+		    				font-style: italic;
+		    				padding-bottom: 10px;
+		    			}
+		    			input[type='checkbox'] {
+		    				background: transparent !important;
+		    				width: auto !important;
+		    				height: auto !important;
+		    				margin: 0 10px 0px 0;
+		    			}
+    				}
+    			}
+	    	}
+	    }
+	}
+}
+.ie7 #main .order_form .right form p {
+	margin-bottom: 10px !important;
+}

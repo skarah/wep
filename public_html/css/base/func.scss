@@ -1,0 +1,4 @@
+﻿@mixin shadow($color){
+	text-shadow: 1px 1px 0 $color;
+	filter: dropshadow(color=$color, offx=1, offy=1 );
+}

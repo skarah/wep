@@ -1,0 +1,149 @@
+@import "base/base.scss";
+@import "base/func.scss";
+@import "base/all.scss";
+@import "base/call_form.scss";
+
+
+body {
+	background: #d4effc url('../images/bottom_bg.png') top center;
+	min-height: 754px;
+}
+
+// Top Menu 
+.top_menu {
+	position: relative;
+	top: -15px;
+	background: url('../images/title_bg.png') repeat-x top;
+	height: 173px;
+	z-index: 1;
+	padding-top: 26px;
+
+	.top_menu_container {
+		background: url('../images/title_top_bg.png') no-repeat;
+        width: 978px;
+        padding-top: 12px;
+        margin: 0 auto;
+        position: relative;
+
+        .top_menu_center {
+            position: relative;
+            width: 838px;
+            padding: 21px  70px 26px 70px;
+            background: url('../images/title_center_bg.png') repeat-y;
+        }
+        .top_menu_bottom {
+            background: url('../images/title_bottom_bg.png') no-repeat bottom;
+            padding-bottom: 23px;
+            position: relative; 
+            width: 978px;
+        }
+		h1 {
+			color: #ff6600;
+			font: 36px Georgia;
+			font-weight: normal;
+			margin-bottom: 18px;
+		}
+		ul {
+			list-style: none;
+			margin: 0px;
+			li {
+				display: inline;
+				margin-right: 15px;
+				a {
+					color: #0099cc;
+					font: 14px Arial;
+				}
+				a:hover {
+					color: #ff6600;
+				}
+			}
+			li.active {
+				a {
+					font-weight: bold;
+					color: #cccccc;
+				}
+				a:hover {
+					color: #ff6600;
+				}
+			}
+		}
+	}
+}
+
+// Main Content
+#main {
+	padding-bottom: 20px;
+
+	.main_container {
+		width: 969px;
+		margin: 0 auto;	
+
+		div.hr {
+            background: url('../images/sep.png') repeat-x left bottom;
+            border: 0px;
+            height:2px;
+        }
+
+		.sam_sebya {
+			background: url('../images/sam_sebya_bg.png') no-repeat;
+			width: 898px;
+			height: 431px;
+			padding: 26px 0 0 62px;
+			h2 {
+				font: 60px Georgia;
+				color: #000;
+			}
+			p {
+				font: 24px/36px Georgia;
+				color: #000;
+			}
+		}
+
+		.feedbacks {
+			margin-top: 41px;
+			padding-bottom: 31px;
+			background: url('../images/sep.png') repeat-x bottom;
+			.left{
+				float: left;
+				width: 228px;
+				h3 {
+					font: 24px Georgia;
+					font-style: italic;
+					color: #333333;
+					@include shadow(#fff);
+					margin-bottom: 32px;
+				}
+				p {
+					font: 14px Arial;
+					color: #000;
+					a {
+						color: #0099cc;
+					}
+					a:hover {
+						color: #ff6600;
+					}
+				}
+			}
+			.right {
+				float: right;
+				width: 624px;
+				background: url('../images/quote.png') no-repeat top left;
+				padding-left: 76px;
+
+				blockquote {
+					p {
+						font: 16px/24px Georgia;
+						color: #000;
+						font-style: italic;
+					}
+					p.info {
+						font: 12px/30px Arial;
+						color: #666666;
+						font-style: normal;
+						margin-top: 5px;
+					}
+				}
+			}
+		}
+	}
+}
