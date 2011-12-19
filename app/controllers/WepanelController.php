@@ -1,6 +1,5 @@
 <?php
 
-
 class WepanelController extends WeController
 {
 	public function actions()

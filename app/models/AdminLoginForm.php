@@ -9,7 +9,7 @@ class AdminLoginForm extends CFormModel
 {
 	public $login;
 	public $password;
-	public $rememberMe;
+	public $rememberMe=false;
 
 	private $_identity;
 
@@ -22,7 +22,7 @@ class AdminLoginForm extends CFormModel
 	{
 		return array(
 			// username and password are required
-			array('login, password', 'required', 'message'=>'Поле не может быть пустым!'),
+			array('login, password', 'required', 'message'=>'Поле не может быть пустым'),
 			// rememberMe needs to be a boolean
 			array('rememberMe', 'boolean'),
 			// password needs to be authenticated
