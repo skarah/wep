@@ -16,9 +16,9 @@ $this->pageTitle=Yii::app()->name . ' - Login';
 )); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'username'); ?>
-		<?php echo $form->textField($model,'username',array('size'=>37)); ?>
-		<?php echo $form->error($model,'username'); ?>
+		<?php echo $form->labelEx($model,'login'); ?>
+		<?php echo $form->textField($model,'login',array('size'=>37)); ?>
+		<?php echo $form->error($model,'login'); ?>
 	</div>
 
 	<div class="row">

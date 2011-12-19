@@ -18,15 +18,15 @@ class UserIdentity extends CUserIdentity
 	public function authenticate()
 	{
 		$users=array();
-		$adminsData=Admin::model()->findAll();
-		foreach($adminsData as $key=>$val)
+		$UsersData=User::model()->findAll();
+		foreach($UsersData as $key=>$val)
 		{
-			$users[$val->name]=$val->password;
+			$users[$val->login]=$val->password;
 		}
 		
 		if(!isset($users[$this->username]))
 			$this->errorCode=self::ERROR_USERNAME_INVALID;
-		else if($users[$this->username]!==$this->password)
+		else if($users[$this->username]!==md5($this->password))
 			$this->errorCode=self::ERROR_PASSWORD_INVALID;
 		else
 			$this->errorCode=self::ERROR_NONE;
