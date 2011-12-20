@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Дек 19 2011 г., 15:02
+-- Время создания: Дек 20 2011 г., 14:55
 -- Версия сервера: 5.1.41
 -- Версия PHP: 5.3.2-1ubuntu4.11
 
@@ -18,6 +18,77 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- База данных: `wecms`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `WE_auth_assignments`
+--
+
+CREATE TABLE IF NOT EXISTS `WE_auth_assignments` (
+  `itemname` varchar(64) NOT NULL,
+  `userid` varchar(64) NOT NULL,
+  `bizrule` text,
+  `data` text,
+  PRIMARY KEY (`itemname`,`userid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `WE_auth_assignments`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `WE_auth_itemchildren`
+--
+
+CREATE TABLE IF NOT EXISTS `WE_auth_itemchildren` (
+  `parent` varchar(64) NOT NULL,
+  `child` varchar(64) NOT NULL,
+  PRIMARY KEY (`parent`,`child`),
+  KEY `child` (`child`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `WE_auth_itemchildren`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `WE_auth_items`
+--
+
+CREATE TABLE IF NOT EXISTS `WE_auth_items` (
+  `name` varchar(64) NOT NULL,
+  `type` int(11) NOT NULL,
+  `description` text,
+  `bizrule` text,
+  `data` text,
+  PRIMARY KEY (`name`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `WE_auth_items`
+--
+
+INSERT INTO `WE_auth_items` (`name`, `type`, `description`, `bizrule`, `data`) VALUES
+('admin', 2, NULL, NULL, NULL),
+('Administrator', 2, NULL, NULL, NULL),
+('User', 2, NULL, NULL, NULL),
+('Post Manager', 1, NULL, NULL, NULL),
+('User Manager', 1, NULL, NULL, NULL),
+('Delete Post', 0, NULL, NULL, NULL),
+('Create Post', 0, NULL, NULL, NULL),
+('Edit Post', 0, NULL, NULL, NULL),
+('View Post', 0, NULL, NULL, NULL),
+('Delete User', 0, NULL, NULL, NULL),
+('Create User', 0, NULL, NULL, NULL),
+('Edit User', 0, NULL, NULL, NULL),
+('View User', 0, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 

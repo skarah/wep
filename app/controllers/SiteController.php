@@ -81,7 +81,7 @@ class SiteController extends Controller
 			$this->page=!empty($_GET['parenturl'])?Section::model()->getPageData(array($_GET['url'],$_GET['parenturl'])):Section::model()->getPageData(array($_GET['url']));
 			$this->render('innerpage',array('model'=>$model,));
 		}
-		else $this->redirect('/map/');
+		//else $this->redirect('/map/');
 			
 	}
 
