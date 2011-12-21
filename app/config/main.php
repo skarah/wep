@@ -82,6 +82,9 @@ return array(
             'showScriptName' => false,  // что бы не цеплялся index.php к ссылкам
             'urlFormat'=>'path',
             'rules'=>array(
+				'wepanel/block' => 'block/index',
+				'wepanel/block/update/<id:\d+>'=>'block/update',
+				'wepanel/block/view/id/<id:\d+>'=>'block/view',
 				'wepanel/<action:\w+>' => 'wepanel/<action>',
 				'wepanel' => 'wepanel/index',
 				

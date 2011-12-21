@@ -35,6 +35,7 @@
 				array('label'=>'Отзывы', 'url'=>array('/wepanel/guestbook')),
 				array('label'=>'Баннеры', 'url'=>array('/wepanel/banners')),
 				array('label'=>'Сниппеты', 'url'=>array('/wepanel/snippets')),
+				array('label'=>'Блоки New', 'url'=>array('/wepanel/block')),
 				//array('label'=>'Login', 'url'=>array('/wepanel/login'), 'visible'=>Yii::app()->user->isGuest),
 				//array('label'=>'Выйти ('.Yii::app()->user->name.')', 'url'=>array('/wepanel/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),
