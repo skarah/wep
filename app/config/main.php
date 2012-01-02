@@ -17,9 +17,12 @@ return array(
 		'application.models.*',
 		'application.components.*',
 		'application.modules.srbac.controllers.SBaseController',
+		'application.modules.admin.controllers.DefaultController',
+		//'application.modules.admin.modules.news.controllers.DefaultController',
 	),
 
 	'modules'=>array(
+	        'admin'=>array('modules'=>array('news')),
 		// uncomment the following to enable the Gii tool
 			'srbac' => array(
 				'userclass'=>'User', //default: User
@@ -65,7 +68,7 @@ return array(
 	// application components
 	'components'=>array(
 	     'thumb'=>array(
-         'class'=>'ext.CThumbCreator.CThumbCreator',
+         'class'=>'application.modules.admin.extensions.CThumbCreator.CThumbCreator',
 			),
 		'browser' => array(
 			'class' => 'application.extensions.browser.CBrowserComponent',
@@ -73,7 +76,7 @@ return array(
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
-			'loginUrl'=>array('/wepanel/login'),
+			'loginUrl'=>array('/admin/login'),
 		),
 		
 		// uncomment the following to enable URLs in path-format
@@ -82,27 +85,41 @@ return array(
             'showScriptName' => false,  // что бы не цеплялся index.php к ссылкам
             'urlFormat'=>'path',
             'rules'=>array(
-				'wepanel/<action:\w+>' => 'wepanel/<action>',
-				'wepanel' => 'wepanel/index',
+				//'wepanel/<action:\w+>' => 'wepanel/<action>',
+				//'wepanel' => 'wepanel/index',
 				
-				'about/testimonials' => 'site/guestbook/url/testimonials/parenturl/about',
+				//'about/testimonials' => 'site/guestbook/url/testimonials/parenturl/about',
 				
-				'portfolio' => 'site/portfolio/url/portfolio',
-				'portfolio/<page>.html' => 'site/portfoliopage/url/portfolio',
-				'portfolio/<tag>' => 'site/portfolio/url/portfolio',
+				//'portfolio' => 'site/portfolio/url/portfolio',
+				//'portfolio/<page>.html' => 'site/portfoliopage/url/portfolio',
+				//'portfolio/<tag>' => 'site/portfolio/url/portfolio',
 				
-				'journal' => 'site/journal/url/journal',
-				'journal/<page>.html' => 'site/journalpage/url/journal',
-				'journal/<tag>' => 'site/journal/url/journal',
+				//'journal' => 'site/journal/url/journal',
+				//'journal/<page>.html' => 'site/journalpage/url/journal',
+				//'journal/<tag>' => 'site/journal/url/journal',
 				
-				'map' => 'site/map',
-				'search' => 'site/search',
+				//'map' => 'site/map',
+				//'search' => 'site/search',
 				
-				'sendmail' => 'site/sendmail',
+				//'sendmail' => 'site/sendmail',
+				//'wepanel/srbac/authitem/frontpage'=>'srbac/authitem/frontpage',
 				
-				'<url>'=>'site/section',
-				'<parenturl>/<url>/'=>'site/section',
-				'<rooturl>/<parenturl>/<url>/'=>'site/section',
+				//'<url>'=>'site/section',
+				//'<parenturl>/<url>/'=>'site/section',
+				//'<rooturl>/<parenturl>/<url>/'=>'site/section',
+				
+				//'admin/<action:\w+>' => 'admin/<action>',
+				//'admin/<controller:\w+>/<action:\w+>/<id:\d+>'=>'admin/<controller>/<action>',
+				'admin' => 'admin/default/index',
+				'admin/login' => 'admin/default/login',
+				'admin/logout' => 'admin/default/logout',
+				//'admin/<controller:\w+>/<action:\w+>/<item:\d+>'=>'admin/<controller>/<action>',
+				//'admin/news' => 'admin/news/default/index',
+				'admin/news'=>'admin/news/default/index',
+
+				//'admin/news'=>'admin/news/default/index',
+				//'admin/news' => 'admin/news/default/index',
+
 				//'wepanel/'=>'wepanel/login',
                 //'post/<url>/'=>'post/view',
                 //'members/view/<member>' => 'members/view',

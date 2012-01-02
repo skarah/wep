@@ -147,15 +147,15 @@ class SiteController extends Controller
 			
 			$this->render('portfolio',array('model'=>$model,));
 		}
-		else $this->redirect('/map/');
+		//else $this->redirect('/map/');
 	}
 
 	public function actionPortfoliopage()
 	{
 		if(!is_numeric($_GET['page']))
 		{
-			$this->redirect('/map/');
-			Yii::app()->end();			
+			//$this->redirect('/map/');
+			//Yii::app()->end();			
 		}
 
 		
@@ -202,8 +202,8 @@ class SiteController extends Controller
 			$model=News::model()->findAll(array('order'=>'date desc'));
 		else
 		{
-			$this->redirect('/map/');
-			Yii::app()->end();
+			//$this->redirect('/map/');
+			//Yii::app()->end();
 		}
 				
 		for($i=0;$i<sizeof($model);$i++)
@@ -223,8 +223,8 @@ class SiteController extends Controller
 	{	
 		if(!is_numeric($_GET['page']))
 		{
-			$this->redirect('/map/');
-			Yii::app()->end();			
+			//$this->redirect('/map/');
+			//Yii::app()->end();			
 		}
 			
 		$this->page=Section::model()->getPageData(array($_GET['url']));

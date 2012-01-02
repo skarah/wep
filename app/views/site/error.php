@@ -1,6 +1,6 @@
 <?php
-$this->redirect('/map/');
-die();
+//$this->redirect('/map/');
+//die();
 $this->pageTitle=Yii::app()->name . ' - Error';
 $this->breadcrumbs=array(
 	'Error',
