@@ -1,17 +1,19 @@
 <?php
 
 /**
- * This is the model class for table "WE_type".
+ * This is the model class for table "WE_faq".
  *
- * The followings are the available columns in table 'WE_type':
+ * The followings are the available columns in table 'WE_faq':
  * @property integer $id
- * @property string $name
+ * @property string $question
+ * @property string $answer
+ * @property integer $posled
  */
-class Module extends CActiveRecord
+class Faq extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
-	 * @return Type the static model class
+	 * @return News the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -23,7 +25,7 @@ class Module extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'WE_module';
+		return 'WE_faq';
 	}
 
 	/**
@@ -34,15 +36,23 @@ class Module extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('name', 'required'),
-			array('name', 'length', 'max'=>50),
-			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
-			array('id, name', 'safe', 'on'=>'search'),
+			array('question, answer', 'required','message' => 'Поле не может быть пустым.'),
+			array('posled', 'numerical', 'integerOnly'=>true),
+			array('id, question, answer, posled', 'safe', 'on'=>'search'),
 		);
 	}
 
-
+	/**
+	 * @return array relational rules.
+	 */
+	public function relations()
+	{
+		// NOTE: you may need to adjust the relation name and the related
+		// class name for the relations automatically generated below.
+		return array(
+		
+		);
+	}
 
 	/**
 	 * @return array customized attribute labels (name=>label)
@@ -51,10 +61,11 @@ class Module extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Модуль',
+			'question' => 'Вопрос',
+			'answer' => 'Ответ',
+			'posled' => 'Порядок',
 		);
 	}
-
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
@@ -67,28 +78,13 @@ class Module extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('name',$this->name,true);
+		$criteria->compare('question',$this->question,true);
+		$criteria->compare('answer',$this->answer,true);
+		$criteria->compare('posled',$this->posled);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
-	
-	public function setAdditionalModules()
-	{
-			$modules=Module::model()->findAll();
-			foreach($modules as $key=>$module)
-			{
-				if($module->name=='news') 
-					Yii::app()->setModules(array($module->name=>array('moduleName'=>'Новости')));
-				elseif($module->name=='srbac')
-					Yii::app()->setModules(array($module->name=>array('moduleName'=>'srbac')));
-				elseif($module->name=='faq')
-					Yii::app()->setModules(array($module->name=>array('moduleName'=>'FAQ')));
-			}
-			
-            return true;
-	}
-
-	
+		
 }

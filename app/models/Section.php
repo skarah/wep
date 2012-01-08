@@ -45,7 +45,7 @@ class Section extends CActiveRecord
 	public function relations()
 	{
         return array(
-            'tags'=>array(self::HAS_MANY, 'Tag', 'section'),
+            //'tags'=>array(self::HAS_MANY, 'Tag', 'section'),
             //'tags'=>array(self::MANY_MANY, 'Tag','tbl_post_category(post_id, category_id)'),
             'sectionType' => array(self::BELONGS_TO, 'Type', 'type'),
             'child' => array(self::HAS_MANY, 'Section', 'pid', 'order'=>'child.posled ASC', 'together'=>true),

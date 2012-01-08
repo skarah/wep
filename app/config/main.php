@@ -25,6 +25,7 @@ return array(
 	        'admin'=>array(
 				'modules'=>array(
 					'news',
+					'faq',
 					'srbac' => array(
 						'userclass'=>'User', //default: User
 						'userid'=>'id', //default: userid
@@ -117,8 +118,8 @@ return array(
 				'admin' => 'admin/default/index',
 				'admin/login' => 'admin/default/login',
 				'admin/logout' => 'admin/default/logout',
-				'admin/news/<action:\w+>'=>'admin/news/default/<action>',
-				'admin/news/<action:\w+>/item/<item:\d+>'=>'admin/news/default/<action>',
+				'admin/<module:\w+>/<action:\w+>'=>'admin/<module>/default/<action>',
+				'admin/<module:\w+>/<action:\w+>/item/<item:\d+>'=>'admin/<module>/default/<action>',
 				//'admin/news' => 'admin/news/default/index',
 				//'admin/news'=>'admin/news/default/index',
 
