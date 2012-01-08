@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Янв 08 2012 г., 12:11
+-- Время создания: Янв 08 2012 г., 21:35
 -- Версия сервера: 5.1.41
 -- Версия PHP: 5.3.2-1ubuntu4.11
 
@@ -37,6 +37,8 @@ CREATE TABLE IF NOT EXISTS `WE_auth_assignments` (
 -- Дамп данных таблицы `WE_auth_assignments`
 --
 
+INSERT INTO `WE_auth_assignments` (`itemname`, `userid`, `bizrule`, `data`) VALUES
+('admin', '1', '', 's:0:"";');
 
 -- --------------------------------------------------------
 
@@ -112,6 +114,28 @@ INSERT INTO `WE_block` (`id`, `name`, `content`, `vis`) VALUES
 (1, 'Есть работа!', '<div class="vacancy">\r\n	<div class="vacancy_content">\r\n		<h3>\r\n			Есть работа!</h3>\r\n		<p>\r\n			В студи</p>\r\n		<div class="snoska">\r\n			<b>Текст сноски</b><img id="gallery1" src="/WE/images/gallery.png" style="display:block" title="Моя первая галерея (ID=1)" /><img id="gallery1" src="/WE/images/gallery.png" style="display:block" title="Моя первая галерея (ID=1)" /></div>\r\n		<p>\r\n			ю требуется<br />\r\n			талантливый<br />\r\n			php-программист с опытом работы.</p>\r\n		<p>\r\n			Зарплата от 15 000 рублей.</p>\r\n		<p class="resume">\r\n			Подробнее читайте <a href="http://webelement.ru/about/vacancy/" title="Вакансия суперменеджера">здесь</a>.</p>\r\n	</div>\r\n</div>\r\n', 1),
 (2, 'Текст на главной', '<h1>\r\n	<a href="/about/studio/">Студия web-дизайна WebElement.Ru</a></h1>\r\n<p>\r\n	Наша студия &mdash; это команда единомышленников, объединенных одной целью &mdash; делать любимую работу, создавая продукты, приносящие максимальную прибыль клиентам, за которые нам не будет стыдно.</p>\r\n<p>\r\n	Лучше всего у нас получается делать сайты. Мы разбираемся во всех тонкостях проектирования, <a href="http://webelement.ru/services/create/">создания</a> и <a href="http://webelement.ru/services/seo/">продвижения</a> сайтов. Имея за плечами огромный опыт разработки веб-проектов, мы без ложной скромности считаем себя профессионалами.</p>\r\n<p>\r\n	Все наши сайты мы создаем руками с обязательным применением мозга. Каждый раз, создавая сайт, мы думаем о людях, которые будут им пользоваться, и стараемся сделать так, чтобы их взаимодействие было максимально простым, удобным и понятным. Ещё на стадии проектирования сайта мы думаем о том, по каким ключевым словам и на какие страницы будут заходить пользователи, тем самым существенно упрощая дальнейшее продвижение и рекламу проекта.</p>\r\n<p>\r\n	<a href="http://webelement.ru/about/studio/">Дальше ещё интереснее... </a></p>\r\n', 1),
 (11, 'Ваше письмо отправлено', '<p>\r\n	В ближайшее время мы с Вами свяжемся.</p>\r\n', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `WE_faq`
+--
+
+CREATE TABLE IF NOT EXISTS `WE_faq` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `question` mediumtext NOT NULL,
+  `answer` text NOT NULL,
+  `posled` int(3) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Дамп данных таблицы `WE_faq`
+--
+
+INSERT INTO `WE_faq` (`id`, `question`, `answer`, `posled`) VALUES
+(1, '<p>\r\n	Как вести себя при задержании?</p>\r\n', '<p>\r\n	Если вас задерживают, то оказывать сопротивление, а тем более применять физическую силу по отношению к полицейским нельзя! Иначе вам может грозить уголовное наказание.</p>\r\n<p>\r\n	<b>Если вас задержали и доставили в полицию, то, прежде всего, ведите себя сдержанно, разговаривайте спокойно, не срывайтесь на грубость.</b></p>\r\n<p>\r\n	<b>Запомните время</b>, в которое вы были доставлены в отделение. Это поможет в дальнейшем с установлением сроков вашего пребывания в полиции.</p>\r\n', 0),
+(2, '<p>\r\n	Что такое досмотр и как он производится?</p>\r\n', '<p>\r\n	Досмотр подразумевает тщательное обследование вещей, проводимое без нарушения их конструктивной целостности. Досмотр является мерой обеспечения производства по делу об административном правонарушении (ст. 27.7 КоАП РФ)</p>\r\n<p>\r\n	<b>Досмотр не может производиться просто так &laquo;из любопытства&raquo;</b>. Для проведения досмотра всегда должна быть причина, о которой следует спросить представителя органа власти и которую вам должны назвать.&nbsp;</p>\r\n', 0);
 
 -- --------------------------------------------------------
 
@@ -203,14 +227,16 @@ CREATE TABLE IF NOT EXISTS `WE_module` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
 
 --
 -- Дамп данных таблицы `WE_module`
 --
 
 INSERT INTO `WE_module` (`id`, `name`) VALUES
-(15, 'news');
+(25, 'faq'),
+(21, 'news'),
+(24, 'srbac');
 
 -- --------------------------------------------------------
 
@@ -262,30 +288,6 @@ INSERT INTO `WE_params` (`id`, `name`, `value`, `title`) VALUES
 (5, 'siteTitle', 'Студия web-дизайна WebElement.Ru', 'Текст который всегда будет добавляться в конец заголовка(title для head)'),
 (6, 'siteKeywords', '', 'Ключевые слова'),
 (7, 'thumbPrefix', 'thumb_', 'Префикс для превью картинок');
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `WE_portfolio`
---
-
-CREATE TABLE IF NOT EXISTS `WE_portfolio` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `mark` tinyint(1) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `client` varchar(255) NOT NULL,
-  `site` varchar(255) NOT NULL,
-  `task` mediumtext NOT NULL,
-  `before_text` mediumtext NOT NULL,
-  `after_text` mediumtext NOT NULL,
-  `date` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
-
---
--- Дамп данных таблицы `WE_portfolio`
---
-
 
 -- --------------------------------------------------------
 
