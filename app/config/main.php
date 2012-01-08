@@ -113,9 +113,10 @@ return array(
 				'admin' => 'admin/default/index',
 				'admin/login' => 'admin/default/login',
 				'admin/logout' => 'admin/default/logout',
-				//'admin/<controller:\w+>/<action:\w+>/<item:\d+>'=>'admin/<controller>/<action>',
+				'admin/news/<action:\w+>'=>'admin/news/default/<action>',
+				'admin/news/<action:\w+>/item/<item:\d+>'=>'admin/news/default/<action>',
 				//'admin/news' => 'admin/news/default/index',
-				'admin/news'=>'admin/news/default/index',
+				//'admin/news'=>'admin/news/default/index',
 
 				//'admin/news'=>'admin/news/default/index',
 				//'admin/news' => 'admin/news/default/index',

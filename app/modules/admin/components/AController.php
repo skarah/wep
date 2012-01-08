@@ -2,7 +2,7 @@
 
 class AController extends CController
 {
-	public $layout='main';
+	public $layout='application.modules.admin.views.layouts.main';
 	public $page=array();
 	public $menu=array();
 	public $breadcrumbs=array();
@@ -24,7 +24,7 @@ class AController extends CController
 					Yii::app()->setModules(array($module->name=>array('moduleName'=>'Новости')));
 				}
 			}
-			print_r(Yii::app()->getModules());	
+			
             return true;
         }
     }

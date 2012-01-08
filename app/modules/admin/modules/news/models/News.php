@@ -57,7 +57,7 @@ class News extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 		//'sect'=>array(self::BELONGS_TO, 'Tag', 'section'),
-			'tags'=>array(self::MANY_MANY, 'Tag','WE_news_tag(nid, tid)'),
+		//	'tags'=>array(self::MANY_MANY, 'Tag','WE_news_tag(nid, tid)'),
 		);
 	}
 
@@ -100,6 +100,7 @@ class News extends CActiveRecord
 		));
 	}
 	
+	/*
 	public function getTagList($sectionId=20,$newsId=false)
 	{
 		if(!empty($newsId))
@@ -125,6 +126,6 @@ class News extends CActiveRecord
 			//print_r($model);die();
 			return $model;//CHtml::listData(Tag::model()->findAllByAttributes(array('section'=>$sectionId)), 'alias', 'name');
 		}
-	}
+	}*/
 	
 }

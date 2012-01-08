@@ -5,7 +5,6 @@ class DefaultController extends AController
 	
 	public function actionIndex()
 	{
-		echo "ok";die();
 		$this->pageTitle = 'Новости';
 		$this->breadcrumbs = array($this->pageTitle);
 		
@@ -35,6 +34,7 @@ class DefaultController extends AController
 			$model->date = $_POST['News']['date'].' '.date('h:i:s');
 			$model->save();
 			
+			/*
 			NewsTags::model()->deleteAllByAttributes(array('nid'=>$model->id));
 			if(!empty($_POST['Tag']))
 			{
@@ -50,18 +50,18 @@ class DefaultController extends AController
 					}
 				}
 			}
-			
-			$this->redirect('/'.$this->module->id.'/'.Yii::app()->controller->id.(!empty($_POST['apply']) && $_POST['apply']=='Применить'?'/edit/item/'.$model->id:''));
+			*/
+			$this->redirect('/'.$this->module->id.(!empty($_POST['apply']) && $_POST['apply']=='Применить'?'/edit/item/'.$model->id:''));
 		}
 
 		$this->pageTitle = 'Добавить запись';
 		$this->breadcrumbs = array(
-			'Новости' => array(Yii::app()->controller->id),
+			'Новости' => array('index'),
 			$this->pageTitle
 		);
 		
-		$list['tag'] = CHtml::listData(Tag::model()->findAll('section=20',array('order' => 'name')), 'id', 'name');
-		$list['selected']=array();
+		//$list['tag'] = CHtml::listData(Tag::model()->findAll('section=20',array('order' => 'name')), 'id', 'name');
+		//$list['selected']=array();
 		
 		$list['pid'] = Section::model()->treeList();
 		$list['type'] = CHtml::listData(Type::model()->findAll(array('order' => 'id')), 'id', 'name');
@@ -103,6 +103,7 @@ class DefaultController extends AController
 
 			if(isset($_POST['News']))
 			{
+				/*
 				NewsTags::model()->deleteAllByAttributes(array('nid'=>$model->id));
 				if(!empty($_POST['Tag']))
 				{
@@ -118,7 +119,7 @@ class DefaultController extends AController
 						}
 					}
 				}
-
+				*/
 				
 				//аплоад картинок в который передается $model->id, название текущей модели и $_POST
 				Images::model()->upload($model->id,get_class($model),$_POST);
@@ -127,12 +128,12 @@ class DefaultController extends AController
 				$model->short=$_POST['News']['short'];
 				$model->date = $_POST['News']['date'].' '.date('h:i:s');
 				if($model->save())
-					$this->redirect('/'.$this->module->id.'/'.Yii::app()->controller->id.(!empty($_POST['apply']) && $_POST['apply']=='Применить'?'/edit/item/'.$_GET['item']:''));
+					$this->redirect('/'.$this->module->id.(!empty($_POST['apply']) && $_POST['apply']=='Применить'?'/edit/item/'.$_GET['item']:''));
 			}
 			
 			$this->pageTitle = 'Редактировать запись'.' # '.$model->id;
 			$this->breadcrumbs = array(
-				'Новости' => array(Yii::app()->controller->id),
+				'Новости' => array('index'),
 				'Редактировать запись',
 			);
 			$list['pid'] = Section::model()->treeList();
@@ -147,8 +148,8 @@ class DefaultController extends AController
 				$pid = 0;
 			}
 
-			$list['tag'] = CHtml::listData(Tag::model()->findAll('section=20',array('order' => 'name')), 'id', 'name');
-			$list['selected']=CHtml::listData(NewsTags::model()->findAllByAttributes(array('nid'=>$model->id)),'tid','tid');
+			//$list['tag'] = CHtml::listData(Tag::model()->findAll('section=20',array('order' => 'name')), 'id', 'name');
+			//$list['selected']=CHtml::listData(NewsTags::model()->findAllByAttributes(array('nid'=>$model->id)),'tid','tid');
 
 			$images = Images::model()->findAllByAttributes(array('sid'=>$model->id,'model_name'=>get_class($model)));
 
@@ -169,7 +170,7 @@ class DefaultController extends AController
 		{
 			Images::model()->deleteImage($_GET['item'],'News');
 			News::model()->deleteByPk($_GET['item']);
-			echo "<script>alert('Запись #{$_GET['item']} удалена.');document.location='/".$this->module->id.(!empty($_GET['redirect'])?'/'.$_GET['redirect']:'')."';</script>";
+			echo "<script>alert('Запись #{$_GET['item']} удалена.');document.location='/".$this->module->id."';</script>";
 		}
 		
 	}
