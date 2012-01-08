@@ -16,16 +16,9 @@ class AController extends CController
 			 $this->redirect(Yii::app()->user->loginUrl);
         } else {
 			
-			$modules=Module::model()->findAll();
-			foreach($modules as $key=>$module)
-			{
-				if($module->name=='news') 
-				{
-					Yii::app()->setModules(array($module->name=>array('moduleName'=>'Новости')));
-				}
-			}
+			//Module::model()->setAdditionalModules();
+			return true;
 			
-            return true;
         }
     }
 	

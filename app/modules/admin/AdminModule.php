@@ -12,6 +12,7 @@ class AdminModule extends CWebModule
 			'admin.models.*',
 			'admin.modules.*',
 			'admin.components.*',
+			//'admin.modules.srbac.controllers.SBaseController'
 		));
 	}
 

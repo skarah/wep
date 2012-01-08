@@ -39,12 +39,14 @@
 				//array('label'=>'Выйти ('.Yii::app()->user->name.')', 'url'=>array('/wepanel/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			);
 		
+		Module::model()->setAdditionalModules();
 		$connectedModules=Yii::app()->getModules();
 		$modules=Module::model()->findAll();
 		$addModules=array();
 		foreach($modules as $key=>$module)
 		{
-			array_push($items, array('label'=>$connectedModules[$module->name]['moduleName'], 'url'=>array('/admin/'.$module->name.'/default/index')));
+			//array_push($items, array('label'=>$connectedModules[$module->name]['moduleName'], 'url'=>array('/admin/'.$module->name.'/default/index')));
+			if(!empty($connectedModules[$module->name])) array_push($items, array('label'=>$connectedModules[$module->name]['moduleName'], 'url'=>array('/admin/'.$module->name.'/default/index')));
 		}
 		
 		$this->widget('zii.widgets.CMenu',array(

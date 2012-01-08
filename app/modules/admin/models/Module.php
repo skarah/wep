@@ -73,4 +73,20 @@ class Module extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+	public function setAdditionalModules()
+	{
+			$modules=Module::model()->findAll();
+			foreach($modules as $key=>$module)
+			{
+				if($module->name=='news') 
+					Yii::app()->setModules(array($module->name=>array('moduleName'=>'Новости')));
+				elseif($module->name=='srbac')
+					Yii::app()->setModules(array($module->name=>array('moduleName'=>'srbac')));
+			}
+			
+            return true;
+	}
+
+	
 }
