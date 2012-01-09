@@ -23,7 +23,7 @@
 								'update' => '#msgs',
 								'data'=>array(
 									'ajax'=>true,
-									'item' => $images[$i]->id,
+									'id' => $images[$i]->id,
 									'name' => "js:function(){return $('#name".$images[$i]->id."').val();}()",
 									'posled' => Yii::app()->controller->id=='gallery'?"js:function(){return $('#posled".$images[$i]->id."').val();}()":false,
 									),
@@ -36,7 +36,7 @@
 						echo CHtml::ajaxLink(
 							"<img src=\"/WE/images/33.png\"> ",
 							array('/'.$this->module->id.'/'.Yii::app()->controller->id.'/deleteimage'),
-							array('type' => 'GET', 'update' => '#msgs', 'data'=>array('ajax'=>true,'item' => $images[$i]->id)),
+							array('type' => 'GET', 'update' => '#msgs', 'data'=>array('ajax'=>true,'id' => $images[$i]->id)),
 							array('title' => 'Удалить это изображение', 'confirm' => "Вы действительно хотите удалить это изображение?")
 							);
 						?>

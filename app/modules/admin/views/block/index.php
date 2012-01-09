@@ -4,7 +4,6 @@
 if(sizeof($model)>0)
 		$this->widget('zii.widgets.grid.CGridView', array(
         'id'=>'news-grid',
-        //'template'=>'{summary} {items} {pager}',
         'dataProvider'=>$model->search(),
         //'filter'=>$model,
         'skin'=>false,
@@ -21,7 +20,7 @@ if(sizeof($model)>0)
 				array(
 				'name'=>'name',
 				'type'=>'raw',
-				'value'=>'CHtml::link($data->name, "/'.$this->module->id.'/block/edit/item/".$data->id,array("title"=>"Редактировать блок"))',
+				'value'=>'CHtml::link($data->name, "/'.$this->module->id.'/block/edit/".$data->id,array("title"=>"Редактировать блок"))',
 				'filter'=>$model->name,
 				),
                 array(
@@ -30,12 +29,12 @@ if(sizeof($model)>0)
 					
 					'deleteButtonImageUrl'=>Yii::app()->request->baseUrl.'/WE/images/33s.png',
 					'deleteButtonLabel'=>'Удалить блок',
-					'deleteButtonUrl'=>'Yii::app()->createUrl("/'.$this->module->id.'/block/delete", array("item"=>$data->id))',
+					'deleteButtonUrl'=>'Yii::app()->createUrl("/'.$this->module->id.'/block/delete/$data->id")',
 					'deleteConfirmation' => 'Вы действительно хотите удалить этот блок?',
 					
 					'updateButtonImageUrl'=>Yii::app()->request->baseUrl.'/WE/images/20s.png',
 					'updateButtonLabel'=>'Редактировать блок',
-					'updateButtonUrl'=>'Yii::app()->createUrl("/'.$this->module->id.'/block/edit", array("item"=>$data->id))',
+					'updateButtonUrl'=>'Yii::app()->createUrl("/'.$this->module->id.'/block/edit/$data->id")',
 				   
 				),
 			)

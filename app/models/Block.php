@@ -92,7 +92,7 @@ class Block extends CActiveRecord
 	
 	protected function afterFind()
 	{
-		if(Yii::app()->controller->id!='wepanel')
+		if(Yii::app()->module->id!='admin')
 		{			
 			preg_match("/<img(.*?)id=\"gallery(.*?)\"(.*?)\/>/is", $this->content, $matches);
 			if(!empty($matches[2]))
