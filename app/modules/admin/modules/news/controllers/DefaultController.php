@@ -34,23 +34,6 @@ class DefaultController extends AController
 			$model->date = $_POST['News']['date'].' '.date('h:i:s');
 			$model->save();
 			
-			/*
-			NewsTags::model()->deleteAllByAttributes(array('nid'=>$model->id));
-			if(!empty($_POST['Tag']))
-			{
-				foreach($_POST['Tag'] as $key=>$tagId)
-				{
-					if(NewsTags::model()->countByAttributes(array('nid'=>$model->id, 'tid'=>$tagId))==0)
-					{
-						$newTag = new NewsTags();
-						$newTag->nid=$model->id;
-						$newTag->tid=$tagId;
-						$newTag->save();
-						unset($newTag);
-					}
-				}
-			}
-			*/
 			$this->redirect('/'.$this->module->id.(!empty($_POST['apply']) && $_POST['apply']=='Применить'?'/edit/item/'.$model->id:''));
 		}
 
@@ -60,28 +43,13 @@ class DefaultController extends AController
 			$this->pageTitle
 		);
 		
-		//$list['tag'] = CHtml::listData(Tag::model()->findAll('section=20',array('order' => 'name')), 'id', 'name');
-		//$list['selected']=array();
 		
 		$list['pid'] = Section::model()->treeList();
 		$list['type'] = CHtml::listData(Type::model()->findAll(array('order' => 'id')), 'id', 'name');
 		
-		if(!empty($_GET['item'])) // если добавляется подраздел
-		{
-			$pid = $_GET['item'];
-			$purl = Section::model()->treeUrl($_GET['item']).'/';
-		}
-		else
-		{
-			$pid = 0;
-			$purl = false;
-		}
-		
 		$this->render('create',array(
 			'model' => $model,
 			'list' => $list,
-			'pid' => $pid,
-			'purl' => $purl,
 			'images'=>false
 		));
 					
@@ -103,23 +71,6 @@ class DefaultController extends AController
 
 			if(isset($_POST['News']))
 			{
-				/*
-				NewsTags::model()->deleteAllByAttributes(array('nid'=>$model->id));
-				if(!empty($_POST['Tag']))
-				{
-					foreach($_POST['Tag'] as $key=>$tagId)
-					{
-						if(NewsTags::model()->countByAttributes(array('nid'=>$model->id, 'tid'=>$tagId))==0)
-						{
-							$newTag = new NewsTags();
-							$newTag->nid=$model->id;
-							$newTag->tid=$tagId;
-							$newTag->save();
-							unset($newTag);
-						}
-					}
-				}
-				*/
 				
 				//аплоад картинок в который передается $model->id, название текущей модели и $_POST
 				Images::model()->upload($model->id,get_class($model),$_POST);
@@ -139,24 +90,11 @@ class DefaultController extends AController
 			$list['pid'] = Section::model()->treeList();
 			$list['type'] = CHtml::listData(Type::model()->findAll(array('order' => 'id')), 'id', 'name');
 			
-			if(!empty($model->pid)) // если редактируется подраздел
-			{
-				$pid = $model->pid;
-			}
-			else
-			{
-				$pid = 0;
-			}
-
-			//$list['tag'] = CHtml::listData(Tag::model()->findAll('section=20',array('order' => 'name')), 'id', 'name');
-			//$list['selected']=CHtml::listData(NewsTags::model()->findAllByAttributes(array('nid'=>$model->id)),'tid','tid');
-
 			$images = Images::model()->findAllByAttributes(array('sid'=>$model->id,'model_name'=>get_class($model)));
 
 			$this->render('create',array(
 				'model' => $model,
 				'list' => $list,
-				'pid' => $pid,
 				'images' => $images,
 			));
 		}
@@ -179,31 +117,24 @@ class DefaultController extends AController
 	
     public function actionDeleteimage()
     {
-		if(!Yii::app()->user->isGuest)
+		if(!empty($_GET['item']))
 		{
-			if(!empty($_GET['item']))
-			{
-				$image=Images::model()->findByPk($_GET['item']);
-				unlink(Yii::getPathOfAlias('webroot').'/content/'.$image->file);
-				if(is_file(Yii::getPathOfAlias('webroot').Yii::app()->params['thumbDir'].Yii::app()->params['thumbPrefix'].$image->file))
-					unlink(Yii::getPathOfAlias('webroot').Yii::app()->params['thumbDir'].Yii::app()->params['thumbPrefix'].$image->file);
-				Images::model()->deleteByPk($_GET['item']);
-				echo "<script>$('#imgs{$_GET['item']}').remove();</script>";
-			}
+			$image=Images::model()->findByPk($_GET['item']);
+			unlink(Yii::getPathOfAlias('webroot').'/content/'.$image->file);
+			if(is_file(Yii::getPathOfAlias('webroot').Yii::app()->params['thumbDir'].Yii::app()->params['thumbPrefix'].$image->file))
+				unlink(Yii::getPathOfAlias('webroot').Yii::app()->params['thumbDir'].Yii::app()->params['thumbPrefix'].$image->file);
+			Images::model()->deleteByPk($_GET['item']);
+			echo "<script>$('#imgs{$_GET['item']}').remove();</script>";
 		}
-		else $this->redirect(Yii::app()->user->loginUrl);
 	}
 	
 	public function actionUpdateimage()
 	{
-		if(!Yii::app()->user->isGuest)
+		if(!empty($_GET['item']))
 		{
-			if(!empty($_GET['item']))
-			{
-				if(empty($_GET['posled'])) Images::model()->updateByPk($_GET['item'],array('name'=>$_GET['name']));
-				else Images::model()->updateByPk($_GET['item'],array('name'=>$_GET['name'],'posled'=>$_GET['posled']));
-				echo "<script>alert('Информация об изображении сохранена.');</script>";
-			}
+			if(empty($_GET['posled'])) Images::model()->updateByPk($_GET['item'],array('name'=>$_GET['name']));
+			else Images::model()->updateByPk($_GET['item'],array('name'=>$_GET['name'],'posled'=>$_GET['posled']));
+			echo "<script>alert('Информация об изображении сохранена.');</script>";
 		}
 	}
 
