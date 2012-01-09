@@ -119,7 +119,7 @@ return array(
 				'admin/login' => 'admin/default/login',
 				'admin/logout' => 'admin/default/logout',
 				'admin/news/<action:\w+>'=>'admin/news/default/<action>',
-				//'admin/news/<action:\w+>/item/<item:\d+>'=>'admin/news/default/<action>',
+				'admin/news/<action:\w+>/<id:\d+>'=>'admin/news/default/<action>',
 				'admin/faq/<action:\w+>'=>'admin/faq/default/<action>',
 				'admin/faq/<action:\w+>/item/<item:\d+>'=>'admin/faq/default/<action>',
 				'admin/srbac/<action:\w+>'=>'admin/srbac/default/<action>',
