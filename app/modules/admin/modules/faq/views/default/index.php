@@ -5,7 +5,6 @@
 if(sizeof($model)>0)
 		$this->widget('zii.widgets.grid.CGridView', array(
         'id'=>'faq-grid',
-        //'template'=>'{summary} {items} {pager}',
         'dataProvider'=>$model->search(),
         //'filter'=>$model,
         'pager'=>array(
@@ -21,7 +20,7 @@ if(sizeof($model)>0)
 				array(
 				'name'=>'question',
 				'type'=>'raw',
-				'value'=>'CHtml::link($data->question, "/admin/faq/edit/item/".$data->id,array("title"=>"Редактировать запись"))',
+				'value'=>'CHtml::link($data->question, "/admin/faq/edit/".$data->id,array("title"=>"Редактировать запись"))',
 				'filter'=>$model->question,
 				),
                 'answer',
@@ -31,12 +30,12 @@ if(sizeof($model)>0)
 					
 					'deleteButtonImageUrl'=>Yii::app()->request->baseUrl.'/WE/images/33s.png',
 					'deleteButtonLabel'=>'Удалить запись',
-					'deleteButtonUrl'=>'Yii::app()->createUrl("/admin/faq/delete", array("item"=>$data->id))',
+					'deleteButtonUrl'=>'Yii::app()->createUrl("/admin/faq/delete/$data->id")',
 					'deleteConfirmation' => 'Вы действительно хотите удалить эту запись?',
 					
 					'updateButtonImageUrl'=>Yii::app()->request->baseUrl.'/WE/images/20s.png',
 					'updateButtonLabel'=>'Редактировать запись',
-					'updateButtonUrl'=>'Yii::app()->createUrl("/admin/faq/edit", array("item"=>$data->id))',
+					'updateButtonUrl'=>'Yii::app()->createUrl("/admin/faq/edit/$data->id")',
 				   
 				),
 			)

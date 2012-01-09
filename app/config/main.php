@@ -121,7 +121,7 @@ return array(
 				'admin/news/<action:\w+>'=>'admin/news/default/<action>',
 				'admin/news/<action:\w+>/<id:\d+>'=>'admin/news/default/<action>',
 				'admin/faq/<action:\w+>'=>'admin/faq/default/<action>',
-				'admin/faq/<action:\w+>/item/<item:\d+>'=>'admin/faq/default/<action>',
+				'admin/faq/<action:\w+>/<id:\d+>'=>'admin/faq/default/<action>',
 				'admin/srbac/<action:\w+>'=>'admin/srbac/default/<action>',
 				'admin/srbac/<action:\w+>/item/<item:\d+>'=>'admin/srbac/default/<action>',
 				//'admin/news' => 'admin/news/default/index',
