@@ -34,7 +34,7 @@ class DefaultController extends AController
 			$model->date = $_POST['News']['date'].' '.date('h:i:s');
 			$model->save();
 			
-			$this->redirect('/'.$this->module->id.(!empty($_POST['apply']) && $_POST['apply']=='Применить'?'/edit/item/'.$model->id:''));
+			$this->redirect('/'.$this->module->id.(!empty($_POST['apply']) && $_POST['apply']=='Применить'?'/edit/'.$model->id:''));
 		}
 
 		$this->pageTitle = 'Добавить запись';
@@ -77,7 +77,7 @@ class DefaultController extends AController
 			$model->short=$_POST['News']['short'];
 			$model->date = $_POST['News']['date'].' '.date('h:i:s');
 			if($model->save())
-				$this->redirect('/'.$this->module->id.(!empty($_POST['apply']) && $_POST['apply']=='Применить'?'/edit/item/'.$id:''));
+				$this->redirect('/'.$this->module->id.(!empty($_POST['apply']) && $_POST['apply']=='Применить'?'/edit/'.$id:''));
 		}
 		
 		$this->pageTitle = 'Редактировать запись'.' # '.$model->id;
