@@ -100,32 +100,4 @@ class News extends CActiveRecord
 		));
 	}
 	
-	/*
-	public function getTagList($sectionId=20,$newsId=false)
-	{
-		if(!empty($newsId))
-		{
-						
-			return CHtml::listData(Yii::app()->db->createCommand()
-				->select('WE_tag.alias, WE_tag.name')
-				->from('WE_news')
-				->join('WE_news_tag', 'WE_news_tag.nid=WE_news.id')
-				->join('WE_tag', 'WE_tag.id=WE_news_tag.tid')//.$portfolioId)
-				->where('WE_news.id=:id', array(':id'=>$newsId))
-				->query(), 'alias', 'name');
-		}
-		else
-		{
-			$try=Tag::model()->findAllByAttributes(array('section'=>$sectionId));
-			$model=array();
-			for($i=0;$i<sizeof($try);$i++)
-			{
-				if(NewsTags::model()->countByAttributes(array('tid'=>$try[$i]['id']))>0)
-					$model[$try[$i]['alias']]=$try[$i]['name'];
-			}
-			//print_r($model);die();
-			return $model;//CHtml::listData(Tag::model()->findAllByAttributes(array('section'=>$sectionId)), 'alias', 'name');
-		}
-	}*/
-	
 }
