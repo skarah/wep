@@ -122,6 +122,9 @@ return array(
 				'admin/block/<controller:\w+>/<id:\d+>'=>'admin/block/<controller>',
 				'admin/gallery/<controller:\w+>'=>'admin/gallery/<controller>',
 				'admin/gallery/<controller:\w+>/<id:\d+>'=>'admin/gallery/<controller>',
+				'admin/param/controller:\w+>'=>'admin/param/<controller>',
+				'admin/param/<controller:\w+>/<id:\d+>'=>'admin/param/<controller>',
+				
 				'admin/news/<action:\w+>'=>'admin/news/default/<action>',
 				'admin/news/<action:\w+>/<id:\d+>'=>'admin/news/default/<action>',
 				'admin/faq/<action:\w+>'=>'admin/faq/default/<action>',
@@ -173,7 +176,7 @@ return array(
 			'connectionString' => 'mysql:host=localhost;dbname=wecms',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => '',
+			'password' => 'sko62267',
 			'charset' => 'utf8',
 			
 			// включаем профайлер

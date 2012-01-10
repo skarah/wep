@@ -31,12 +31,12 @@ class ParamController extends AController
 		{
 			$model->attributes = $_POST['Params'];
 			if($model->save())
-				$this->redirect('/'.$this->module->id.'/'.Yii::app()->controller->id.(!empty($_POST['apply']) && $_POST['apply']=='Применить'?'/edit/item/'.$model->id:''));
+				$this->redirect('/'.$this->module->id.'/'.Yii::app()->controller->id.(!empty($_POST['apply']) && $_POST['apply']=='Применить'?'/edit/'.$model->id:''));
 		}
 
 		$this->pageTitle = 'Добавить запись в настройки';
 		$this->breadcrumbs = array(
-			'Настройки' => array('params'),
+			'Настройки' => array('/admin/param'),
 			$this->pageTitle
 		);
 		
@@ -46,49 +46,39 @@ class ParamController extends AController
 		
 	}
 	
-	public function actionEdit()
+	public function actionEdit($id)
 	{
-		
-		if(!empty($_GET['item']))
+		$model=Params::model()->findByPk($id);
+
+		// проверка формы аяксом
+		if(isset($_POST['ajax']) && $_POST['ajax']==='param-form')
 		{
-			$model=Params::model()->findByPk($_GET['item']);
-
-			// проверка формы аяксом
-			if(isset($_POST['ajax']) && $_POST['ajax']==='param-form')
-			{
-				echo CActiveForm::validate($model);
-				Yii::app()->end();
-			}
-
-			if(isset($_POST['Params']))
-			{							
-				$model->attributes=$_POST['Params'];
-				if($model->save())
-					$this->redirect('/'.$this->module->id.'/'.Yii::app()->controller->id.(!empty($_POST['apply']) && $_POST['apply']=='Применить'?'/edit/item/'.$_GET['item']:''));
-			}
-
-			$this->pageTitle = 'Редактировать запись в настройках'.' # '.$model->id;			
-			$this->breadcrumbs = array(
-				'Настройки' => array('params'),
-				'Редактировать запись в настройках',
-			);
-			
-			$this->render('//wepanel/params/create',array(
-				'model' => $model,
-			));
+			echo CActiveForm::validate($model);
+			Yii::app()->end();
 		}
+
+		if(isset($_POST['Params']))
+		{							
+			$model->attributes=$_POST['Params'];
+			if($model->save())
+				$this->redirect('/'.$this->module->id.'/'.Yii::app()->controller->id.(!empty($_POST['apply']) && $_POST['apply']=='Применить'?'/edit/'.$id:''));
+		}
+
+		$this->pageTitle = 'Редактировать запись в настройках'.' # '.$model->id;			
+		$this->breadcrumbs = array(
+			'Настройки' => array('/admin/param'),
+			'Редактировать запись в настройках',
+		);
 		
+		$this->render('create',array(
+			'model' => $model,
+		));		
 	}
 	
-	public function actionDelete()
+	public function actionDelete($id)
 	{
-		
-		if(!empty($_GET['item']))
-		{
-			Params::model()->deleteByPk($_GET['item']);
-			echo "<script>alert('Запись #{$_GET['item']} удалена.');document.location='/".$this->module->id.(!empty($_GET['redirect'])?'/'.$_GET['redirect']:'')."';</script>";
-		}
-		
+		Params::model()->deleteByPk($id);
+		echo "<script>alert('Запись #{$id} удалена.');document.location='/".$this->module->id.(!empty($_GET['redirect'])?'/'.$_GET['redirect']:'')."';</script>";
 	}
 	
 }

@@ -4,7 +4,6 @@
 if(sizeof($model)>0)
 		$this->widget('zii.widgets.grid.CGridView', array(
         'id'=>'params-grid',
-        //'template'=>'{summary} {items} {pager}',
         'dataProvider'=>$model->search(),
         //'filter'=>$model,
         'pager'=>array(
@@ -20,7 +19,7 @@ if(sizeof($model)>0)
 				array(
 				'name'=>'title',
 				'type'=>'raw',
-				'value'=>'CHtml::link($data->title, "/'.$this->module->id.'/param/edit/item/".$data->id,array("title"=>"Редактировать запись в настройках"))',
+				'value'=>'CHtml::link($data->title, "/'.$this->module->id.'/param/edit/".$data->id,array("title"=>"Редактировать запись в настройках"))',
 				'filter'=>$model->title,
 				),
                 'value',
@@ -31,12 +30,12 @@ if(sizeof($model)>0)
 					
 					'deleteButtonImageUrl'=>Yii::app()->request->baseUrl.'/WE/images/33s.png',
 					'deleteButtonLabel'=>'Удалить запись из настроек',
-					'deleteButtonUrl'=>'Yii::app()->createUrl("/'.$this->module->id.'/param/delete", array("item"=>$data->id))',
+					'deleteButtonUrl'=>'Yii::app()->createUrl("/'.$this->module->id.'/param/delete/$data->id")',
 					'deleteConfirmation' => 'Вы действительно хотите удалить эту запись из настроек?',
 					
 					'updateButtonImageUrl'=>Yii::app()->request->baseUrl.'/WE/images/20s.png',
 					'updateButtonLabel'=>'Редактировать запись в настроках',
-					'updateButtonUrl'=>'Yii::app()->createUrl("/'.$this->module->id.'/param/edit", array("item"=>$data->id))',
+					'updateButtonUrl'=>'Yii::app()->createUrl("/'.$this->module->id.'/param/edit/$data->id")',
 				   
 				),
 			)
