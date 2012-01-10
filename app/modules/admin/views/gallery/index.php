@@ -4,7 +4,6 @@
 if(sizeof($model)>0)
 		$this->widget('zii.widgets.grid.CGridView', array(
         'id'=>'news-grid',
-        //'template'=>'{summary} {items} {pager}',
         'dataProvider'=>$model->search(),
         //'filter'=>$model,
         'skin'=>false,
@@ -21,7 +20,7 @@ if(sizeof($model)>0)
 				array(
 				'name'=>'name',
 				'type'=>'raw',
-				'value'=>'CHtml::link($data->name, "/'.$this->module->id.'/gallery/edit/item/".$data->id,array("title"=>"Редактировать галерею"))',
+				'value'=>'CHtml::link($data->name, "/'.$this->module->id.'/gallery/edit/".$data->id,array("title"=>"Редактировать галерею"))',
 				'filter'=>$model->name,
 				),
                 array(
@@ -30,12 +29,12 @@ if(sizeof($model)>0)
 					
 					'deleteButtonImageUrl'=>Yii::app()->request->baseUrl.'/WE/images/33s.png',
 					'deleteButtonLabel'=>'Удалить галерею',
-					'deleteButtonUrl'=>'Yii::app()->createUrl("/'.$this->module->id.'/gallery/delete", array("item"=>$data->id))',
+					'deleteButtonUrl'=>'Yii::app()->createUrl("/'.$this->module->id.'/gallery/delete/$data->id")',
 					'deleteConfirmation' => 'Вы действительно хотите удалить эту галерею?',
 					
 					'updateButtonImageUrl'=>Yii::app()->request->baseUrl.'/WE/images/20s.png',
 					'updateButtonLabel'=>'Редактировать галерею',
-					'updateButtonUrl'=>'Yii::app()->createUrl("/'.$this->module->id.'/gallery/edit", array("item"=>$data->id))',
+					'updateButtonUrl'=>'Yii::app()->createUrl("/'.$this->module->id.'/gallery/edit/$data->id")',
 				   
 				),
 			)

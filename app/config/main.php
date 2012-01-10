@@ -120,6 +120,8 @@ return array(
 				'admin/logout' => 'admin/default/logout',
 				'admin/block/<controller:\w+>'=>'admin/block/<controller>',
 				'admin/block/<controller:\w+>/<id:\d+>'=>'admin/block/<controller>',
+				'admin/gallery/<controller:\w+>'=>'admin/gallery/<controller>',
+				'admin/gallery/<controller:\w+>/<id:\d+>'=>'admin/gallery/<controller>',
 				'admin/news/<action:\w+>'=>'admin/news/default/<action>',
 				'admin/news/<action:\w+>/<id:\d+>'=>'admin/news/default/<action>',
 				'admin/faq/<action:\w+>'=>'admin/faq/default/<action>',
