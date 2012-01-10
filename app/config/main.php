@@ -173,7 +173,7 @@ return array(
 			'connectionString' => 'mysql:host=localhost;dbname=wecms',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => 'sko62267',
+			'password' => '',
 			'charset' => 'utf8',
 			
 			// включаем профайлер
