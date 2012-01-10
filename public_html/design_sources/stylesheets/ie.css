@@ -1,0 +1,37 @@
+*html .page {height: 100%;}
+html {filter: expression(runtimeStyle.filter = '',document.execCommand('BackgroundImageCache', false, true));}
+.menu_inner{padding-bottom:9px;}
+.call_left input, .call_right input{padding-top:10px;}
+.footer, ul.dropdown, .sub_menu {zoom: 1}
+.logo{_margin-left:15px;}
+
+/* service_popup menu */
+ul.dropdown ul li					{ display: inline; } 
+/* IE 6 & 7 Needs Inline Block */
+ul.dropdown ul li a	{ border-right: none;  display: inline-block; } 
+.sub_menu{_width:360px;}
+ul.dropdown ul{_height:30px;}
+
+/* contact detail */
+.detail_left{width:430px;}
+
+/* slider*/
+ol#controls {	bottom: 0px;  height: 20px;  overflow: hidden;  position: absolute; margin-left:400px;}
+ol#controls li {	float:left;	margin-right:10px;	height:20px;	overflow:hidden;} 
+
+/* info guest block */
+.guest_title{-moz-text-shadow: 0px -1px 0px #006699; -webkit-text-shadow: 0px -1px 0px #006699; text-shadow: 0px -1px 0px #006699; color:#ffffff; font-weight:bold; text-align:center; height:60px; cursor:default; display:table-cell; vertical-align:middle; width:170px; margin-top:20px;}
+.about_block {_height: 355px;}
+.general_form dd{float:left; margin-bottom:1px;}
+.general_form dd input { _width:expression(this.type=='text' ? '576px' : ''); height:25px; border:1px #a5acb2 solid; font:14px/1.2 Arial, Tahoma; padding:5px 10px 0px; overflow:hidden; }
+.general_form dd input[type="text"]{ padding:5px 10px 0px; height:25px;}
+input.search{padding:7px 10px 0px; height:31px;}
+.hackie{height:1px;}
+.corners_block{_height: 185px;}
+ul.img_list li, .med_programs li, .med_profile li{_list-style-image: url(../images/dotie.gif); margin-bottom:14px; }
+.circumscribing {height:290px; overflow:hidden;}
+.big_photo_block{_padding: 25px 30px;}
+.big_photohr{margin-left:0px; width:240px;}
+.roomrh{margin-left:0px; width:240px;}
+
+.container_slider_room {	width:655px;}
