@@ -31,12 +31,12 @@ class SnippetController extends AController
 		{
 			$model->attributes = $_POST['Snippet'];
 			if($model->save())
-				$this->redirect('/'.$this->module->id.'/'.Yii::app()->controller->id.(!empty($_POST['apply']) && $_POST['apply']=='Применить'?'/edit/item/'.$model->id:''));
+				$this->redirect('/'.$this->module->id.'/'.Yii::app()->controller->id.(!empty($_POST['apply']) && $_POST['apply']=='Применить'?'/edit/'.$model->id:''));
 		}
 
 		$this->pageTitle = 'Добавить сниппет';
 		$this->breadcrumbs = array(
-			'Сниппеты' => array('snippet'),
+			'Сниппеты' => array('/admin/snippet'),
 			$this->pageTitle
 		);
 		
@@ -46,48 +46,39 @@ class SnippetController extends AController
 
 	}
 	
-	public function actionEdit()
+	public function actionEdit($id)
 	{
-		
-		if(!empty($_GET['item']))
+		$model=Snippet::model()->findByPk($id);
+
+		// проверка формы аяксом
+		if(isset($_POST['ajax']) && $_POST['ajax']==='snippet-form')
 		{
-			$model=Snippet::model()->findByPk($_GET['item']);
-
-			// проверка формы аяксом
-			if(isset($_POST['ajax']) && $_POST['ajax']==='snippet-form')
-			{
-				echo CActiveForm::validate($model);
-				Yii::app()->end();
-			}
-
-			if(isset($_POST['Snippet']))
-			{														
-				$model->attributes=$_POST['Snippet'];
-				if($model->save())
-					$this->redirect('/'.$this->module->id.'/'.Yii::app()->controller->id.(!empty($_POST['apply']) && $_POST['apply']=='Применить'?'/edit/item/'.$_GET['item']:''));
-			}
-
-			$this->pageTitle = 'Редактировать сниппет'.' # '.$model->id;			
-			$this->breadcrumbs = array(
-				'Сниппеты' => array('snippets'),
-				'Редактировать сниппет',
-			);
-			
-			$this->render('create',array(
-				'model' => $model,
-			));
+			echo CActiveForm::validate($model);
+			Yii::app()->end();
 		}
+
+		if(isset($_POST['Snippet']))
+		{														
+			$model->attributes=$_POST['Snippet'];
+			if($model->save())
+				$this->redirect('/'.$this->module->id.'/'.Yii::app()->controller->id.(!empty($_POST['apply']) && $_POST['apply']=='Применить'?'/edit/'.$id:''));
+		}
+
+		$this->pageTitle = 'Редактировать сниппет'.' # '.$model->id;			
+		$this->breadcrumbs = array(
+			'Сниппеты' => array('/admin/snippet'),
+			'Редактировать сниппет',
+		);
 		
+		$this->render('create',array(
+			'model' => $model,
+		));		
 	}
 	
-	public function actionDelete()
+	public function actionDelete($id)
 	{
-		if(!empty($_GET['item']))
-		{
-			Snippet::model()->deleteByPk($_GET['item']);
-			echo "<script>alert('Запись #{$_GET['item']} удалена.');document.location='/".$this->module->id.(!empty($_GET['redirect'])?'/'.$_GET['redirect']:'')."';</script>";
-		}
-			
+		Snippet::model()->deleteByPk($id);
+		echo "<script>alert('Запись #{$id} удалена.');document.location='/".$this->module->id.(!empty($_GET['redirect'])?'/'.$_GET['redirect']:'')."';</script>";
 	}
 
 }

@@ -126,6 +126,8 @@ return array(
 				'admin/param/<action:\w+>/<id:\d+>'=>'admin/param/<action>',
 				'admin/section/<action:\w+>'=>'admin/section/<action>',
 				'admin/section/<action:\w+>/<id:\d+>'=>'admin/section/<action>',
+				'admin/snippet/<action:\w+>'=>'admin/snippet/<action>',
+				'admin/snippet/<action:\w+>/<id:\d+>'=>'admin/snippet/<action>',
 				
 				'admin/news/<action:\w+>'=>'admin/news/default/<action>',
 				'admin/news/<action:\w+>/<id:\d+>'=>'admin/news/default/<action>',
