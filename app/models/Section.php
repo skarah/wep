@@ -103,12 +103,12 @@ class Section extends CActiveRecord
 			$sections[$i]=array(
 				'text'=>($section->type==1?'<img src="/WE/images/13s.png" title="Раздел"> ':'').($section->type==2?'<img src="/WE/images/39s.png" title="Новости"> ':'').
 						($section->type==3?'<img src="/WE/images/51s.png" title="Галерея"> ':'').($section->type==4?'<img src="/WE/images/52s.png" title="Портфолио"> ':'').
-						($section->type==5?'<img src="/WE/images/53s.png" title="Отзывы"> ':'')."<a href=\"/admin/section/edit/item/{$section->id}\">".$section->name."</a> ".
+						($section->type==5?'<img src="/WE/images/53s.png" title="Отзывы"> ':'')."<a href=\"/admin/section/edit/{$section->id}\">".$section->name."</a> ".
 						($section->type!=1?'<a href="/admin/'.($section->type==2?'news':($section->type==3?'galleries':($section->type==4?'portfolio':($section->type==5?'guestbook':'')))).'" title="Перейти к содержимому"><img src="/WE/images/54s.png" title="Перейти к содержимому"></a> ':'').
-						"<a href=\"/admin/section/create/item/".$section->id."\" title=\"Добавить подраздел\"><img src=\"/WE/images/31s.png\"></a> "."<a href=\"/admin/section/edit/item/".$section->id."\" title=\"Редактировать раздел\"><img src=\"/WE/images/20s.png\"></a> ".
+						"<a href=\"/admin/section/create/".$section->id."\" title=\"Добавить подраздел\"><img src=\"/WE/images/31s.png\"></a> "."<a href=\"/admin/section/edit/".$section->id."\" title=\"Редактировать раздел\"><img src=\"/WE/images/20s.png\"></a> ".
 						CHtml::ajaxLink(
 							"<img src=\"/WE/images/33s.png\"> ",
-							array('/admin/section/delete', 'item' => $section->id),
+							array('/admin/section/delete/'.$section->id),
 							array('type' => 'GET', 'update' => '#msgs'),
 							array('title' => 'Удалить раздел со всеми подразделами', 'confirm' => "Вы действительно хотите удалить раздел со всеми его подразделами?")
 							)." ",

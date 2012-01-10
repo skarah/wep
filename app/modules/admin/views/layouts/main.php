@@ -71,10 +71,10 @@
 	<?php if(!(Yii::app()->controller->action->id=='index' && Yii::app()->controller->id=='default') || (Yii::app()->controller->action->id=='index' && Yii::app()->controller->id=='default' && $this->module->id!='admin')):?>
 	<div align="right">		
 		<h4 id="add"><?php echo CHtml::link('Добавить запись', array('/'.(Yii::app()->controller->id!='default'?'admin/'.Yii::app()->controller->id:$this->module->id).'/create'));?></h4>
-		<h4 id="del"><?=(!empty($_GET['item']) && Yii::app()->controller->action->id!='create'?CHtml::ajaxLink(
+		<h4 id="del"><?=(!empty($_GET['id']) && Yii::app()->controller->action->id!='create'?CHtml::ajaxLink(
 					"Удалить запись",
 					//array('/'.(Yii::app()->controller->id!='default'?'admin/'.Yii::app()->controller->id:$this->module->id).'/delete', 'item' => $_GET['item'], 'redirect'=> ($this->module->id=='admin'?Yii::app()->controller->id:$this->module->id)),
-					array('/'.(Yii::app()->controller->id!='default'?'admin/'.Yii::app()->controller->id:$this->module->id).'/delete', 'item' => $_GET['item']),
+					array('/'.(Yii::app()->controller->id!='default'?'admin/'.Yii::app()->controller->id:$this->module->id).'/delete/'.$_GET['id']),
 					array('type' => 'GET', 'update' => '#msgs'),
 					array('title' => 'Удалить запись', 'confirm' => "Вы действительно хотите удалить эту запись?")
 					):'')?></h4>
