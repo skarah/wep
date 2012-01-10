@@ -9,23 +9,8 @@
 </div>
 
 <div class="index">
-	<a href="/<?=$this->module->id?>/guestbook" title="Отзывы"><img src="/WE/images/guestbook.png" width="110" border=0></a>
-	<a href="/<?=$this->module->id?>/guestbook" title="Отзывы"><h6>Отзывы</h6></a>
-</div>
-
-<div class="index">
-	<a href="/<?=$this->module->id?>/tags" title="Теги"><img src="/WE/images/tags.png" width="110" border=0></a>
-	<a href="/wepanel/tags" title="Теги"><h6>Теги</h6></a>	
-</div>
-
-<div class="index">
-	<a href="/<?=$this->module->id?>/banners" title="Баннеры"><img src="/WE/images/banners.png" width="110" border=0></a>
-	<a href="/<?=$this->module->id?>/banners" title="Баннеры"><h6>Баннеры</h6></a>
-</div>
-
-<div class="index">
-	<a href="/<?=$this->module->id?>/galleries" title="Галереи"><img src="/WE/images/gallery.png" width="110" border=0></a>
-	<a href="/<?=$this->module->id?>/galleries" title="Галереи"><h6>Галереи</h6></a>	
+	<a href="/<?=$this->module->id?>/gallery" title="Галереи"><img src="/WE/images/gallery.png" width="110" border=0></a>
+	<a href="/<?=$this->module->id?>/gallery" title="Галереи"><h6>Галереи</h6></a>	
 </div>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <h4>Добро пожаловать в систему управления сайтом WEPanel.</h4>
